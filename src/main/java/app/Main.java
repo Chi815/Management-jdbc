@@ -27,7 +27,7 @@ public class Main {
             while (true) {
 
                 System.out.println("\n=================================");
-                System.out.println(" MANAGEMENT SYSTEM");
+                System.out.println(" SCHOOL MANAGEMENT SYSTEM");
                 System.out.println("=================================");
                 System.out.println("1. Student Management");
                 System.out.println("2. Teacher Management");
@@ -215,22 +215,18 @@ public class Main {
                     System.out.print("Email: ");
                     String email = sc.nextLine();
 
-                    System.out.print("Subject: ");
-                    String subject = sc.nextLine();
-
                     System.out.print("Phone: ");
                     String phone = sc.nextLine();
 
                     System.out.print("Employment Type (Full Time / Part Time): ");
-                    String employment_type = sc.nextLine();
+                    String employmentType = sc.nextLine();
 
                     Teacher teacher =
                             new Teacher(
                                     name,
                                     email,
-                                    subject,
                                     phone,
-                                    employment_type
+                                    employmentType
                             );
 
                     service.addTeacher(teacher);
@@ -263,7 +259,6 @@ public class Main {
                 case 4:
 
                     System.out.print("ID: ");
-
                     int updateId = sc.nextInt();
                     sc.nextLine();
 
@@ -273,23 +268,19 @@ public class Main {
                     System.out.print("New Email: ");
                     String newEmail = sc.nextLine();
 
-                    System.out.print("New Subject: ");
-                    String newSubject = sc.nextLine();
-
                     System.out.print("New Phone: ");
                     String newPhone = sc.nextLine();
 
-                    System.out.print("Employment Type: ");
-                    String newemployment_type = sc.nextLine();
+                    System.out.print("New Employment Type: ");
+                    String newEmploymentType = sc.nextLine();
 
                     Teacher updated =
                             new Teacher(
                                     updateId,
                                     newName,
                                     newEmail,
-                                    newSubject,
                                     newPhone,
-                                    newemployment_type
+                                    newEmploymentType
                             );
 
                     service.updateTeacher(updated);

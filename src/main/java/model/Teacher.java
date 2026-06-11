@@ -7,9 +7,8 @@ public class Teacher {
     private int id;
     private String fullName;
     private String email;
-    private String subject;
     private String phoneNumber;
-    private String employment_type;
+    private String employmentType;
     private Timestamp createdAt;
 
     public Teacher() {
@@ -18,31 +17,27 @@ public class Teacher {
     public Teacher(
             String fullName,
             String email,
-            String subject,
             String phoneNumber,
-            String employment_type
+            String employmentType
     ) {
         this.fullName = fullName;
         this.email = email;
-        this.subject = subject;
         this.phoneNumber = phoneNumber;
-        this.employment_type = employment_type;
+        this.employmentType = employmentType;
     }
 
     public Teacher(
             int id,
             String fullName,
             String email,
-            String subject,
             String phoneNumber,
-            String employment_type
+            String employmentType
     ) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
-        this.subject = subject;
         this.phoneNumber = phoneNumber;
-        this.employment_type = employment_type;
+        this.employmentType = employmentType;
     }
 
     public int getId() {
@@ -72,15 +67,6 @@ public class Teacher {
     }
 
 
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -89,13 +75,15 @@ public class Teacher {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getemployment_type() {
-        return employment_type;
+
+    public String getEmploymentType() {
+        return employmentType;
     }
 
-    public void setemployment_type(String employment_type) {
-        this.employment_type = employment_type;
+    public void setEmploymentType(String employmentType) {
+        this.employmentType = employmentType;
     }
+
 
     public Timestamp getCreatedAt() {
         return createdAt;
@@ -111,9 +99,8 @@ public class Teacher {
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
-                ", subject='" + subject + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", employment_type='" + employment_type + '\'' +
+                ", employmentType='" + employmentType + '\'' +
                 ", createdAt=" + createdAt +
                 '}';
     }

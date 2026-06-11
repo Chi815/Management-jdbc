@@ -14,9 +14,8 @@ public class TeacherDao {
                     id SERIAL PRIMARY KEY,
                     full_name VARCHAR(100) NOT NULL,
                     email VARCHAR(100) UNIQUE,
-                    subject VARCHAR(100),
                     phone_number VARCHAR(20),
-                    employment_type VARCHAR(100),
+                    employment_type VARCHAR(50),
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 )
                 """;
@@ -31,9 +30,7 @@ public class TeacherDao {
 
             statement.execute(sql);
 
-            System.out.println(
-                    "Teachers table created successfully."
-            );
+            System.out.println("Teachers table created successfully.");
         }
     }
 
@@ -41,11 +38,10 @@ public class TeacherDao {
             Teacher teacher)
             throws Exception {
 
-        String sql =
-                """
+        String sql = """
                 INSERT INTO teachers
-                (full_name,email,subject,phone_number,employment_type)
-                VALUES(?,?,?,?,?)
+                (full_name,email,phone_number,employment_type)
+                VALUES(?,?,?,?)
                 """;
 
         try (
@@ -56,34 +52,14 @@ public class TeacherDao {
                         connection.prepareStatement(sql)
         ) {
 
-            ps.setString(
-                    1,
-                    teacher.getFullName());
+            ps.setString(1, teacher.getFullName());
+            ps.setString(2, teacher.getEmail());
+            ps.setString(3, teacher.getPhoneNumber());
+            ps.setString(4, teacher.getEmploymentType());
 
-            ps.setString(
-                    2,
-                    teacher.getEmail());
+            int rows = ps.executeUpdate();
 
-            ps.setString(
-                    3,
-                    teacher.getSubject());
-
-            ps.setString(
-                    4,
-                    teacher.getPhoneNumber());
-
-            ps.setString(
-                    5,
-                    teacher.getemployment_type());
-            
-            
-
-            int rows =
-                    ps.executeUpdate();
-
-            System.out.println(
-                    rows + " teacher inserted."
-            );
+            System.out.println(rows + " teacher inserted.");
         }
     }
 
@@ -121,13 +97,10 @@ public class TeacherDao {
                 teacher.setEmail(
                         rs.getString("email"));
 
-                teacher.setSubject(
-                        rs.getString("subject"));
-
                 teacher.setPhoneNumber(
                         rs.getString("phone_number"));
-                
-                teacher.setemployment_type(
+
+                teacher.setEmploymentType(
                         rs.getString("employment_type"));
 
                 teacher.setCreatedAt(
@@ -144,13 +117,11 @@ public class TeacherDao {
             Teacher teacher)
             throws Exception {
 
-        String sql =
-                """
+        String sql = """
                 UPDATE teachers
                 SET
                 full_name=?,
                 email=?,
-                subject=?,
                 phone_number=?,
                 employment_type=?
                 WHERE id=?
@@ -164,36 +135,15 @@ public class TeacherDao {
                         connection.prepareStatement(sql)
         ) {
 
-            ps.setString(
-                    1,
-                    teacher.getFullName());
+            ps.setString(1, teacher.getFullName());
+            ps.setString(2, teacher.getEmail());
+            ps.setString(3, teacher.getPhoneNumber());
+            ps.setString(4, teacher.getEmploymentType());
+            ps.setInt(5, teacher.getId());
 
-            ps.setString(
-                    2,
-                    teacher.getEmail());
+            int rows = ps.executeUpdate();
 
-            ps.setString(
-                    3,
-                    teacher.getSubject());
-
-            ps.setString(
-                    4,
-                    teacher.getPhoneNumber());
-
-            ps.setString(
-                    5,
-                    teacher.getemployment_type());
-
-            ps.setInt(
-                    6,
-                    teacher.getId());
-
-            int rows =
-                    ps.executeUpdate();
-
-            System.out.println(
-                    rows + " teacher updated."
-            );
+            System.out.println(rows + " teacher updated.");
         }
     }
 
@@ -214,12 +164,9 @@ public class TeacherDao {
 
             ps.setInt(1, id);
 
-            int rows =
-                    ps.executeUpdate();
+            int rows = ps.executeUpdate();
 
-            System.out.println(
-                    rows + " teacher deleted."
-            );
+            System.out.println(rows + " teacher deleted.");
         }
     }
 }
